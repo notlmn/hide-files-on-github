@@ -84,7 +84,9 @@ function addToggleBtn(filesPreview) {
 	tbody.insertAdjacentHTML('afterBegin', `
 		<tr class="hide-files-row dimmed">
 			<td colspan="5">
-				<label for="HFT" class="hide-files-btn"></label>
+				<label for="HFT" class="hide-files-btn">
+					{filesPreview ? '<svg aria-hidden="true" height="16" width="10"><path d="M5 11L0 6l1.5-1.5L5 8.25 8.5 4.5 10 6z"/></svg>' : ''}
+				</label>
 			</td>
 		</tr>
 	`);
@@ -97,12 +99,7 @@ function addToggleBtn(filesPreview) {
 		return;
 	}
 
-	const btn = select('.hide-files-btn');
-	btn.insertAdjacentHTML('afterBegin', `
-		<svg aria-hidden="true" height="16" viewBox="0 0 10 16" width="10"><path d="M5 11L0 6l1.5-1.5L5 8.25 8.5 4.5 10 6z"></path></svg>
-	`);
-
-	btn.insertAdjacentElement('afterEnd', filesPreview);
+	select('.hide-files-btn').insertAdjacentElement('afterEnd', filesPreview);
 
 	// Drop extra links on long lists
 	let moreBtn;
